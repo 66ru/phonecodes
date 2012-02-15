@@ -4,5 +4,3 @@ class WrongNumberException(Exception):
 class OperatorNotFoundException(Exception):
     msg = 'Operator not found.'
 
-class NotPostRequestException(Exception):
-    msg = 'Only post methods allowed.'
