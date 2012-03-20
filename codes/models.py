@@ -1,6 +1,6 @@
 import re
 from django.db import models
-from utils.exceptions import WrongNumberException, OperatorNotFoundException
+from utils.exceptions import InvalidNumberException, OperatorNotFoundException
 
 
 class Operator(models.Model):
@@ -19,7 +19,7 @@ class Operator(models.Model):
         cleaned = re.sub(r'\D', r'', number)
 
         if len(cleaned) != 11:
-            raise WrongNumberException
+            raise InvalidNumberException
         return cleaned
 
     @classmethod
