@@ -29,7 +29,7 @@ message: "ok"
 - при неверном(ненайденном) коде оператора выдает:
 {
 "status": 1,
-"message": "Invalid number."
+"message": "Operator not found."
 }
 
 Парсинг базы с Россвязи запускается так:
