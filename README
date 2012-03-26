@@ -24,12 +24,14 @@ message: "ok"
 - при неправильном номере выдает:
 {
 "status": 1,
-"message": "Invalid number."
+"message": "Invalid number.",
+"code": 1
 }
 - при неверном(ненайденном) коде оператора выдает:
 {
 "status": 1,
-"message": "Operator not found."
+"message": "Operator not found.",
+"code": 2
 }
 
 Парсинг базы с Россвязи запускается так:

@@ -29,7 +29,7 @@ def show_operator(request):
             raise InvalidNumberException
 
     except (OperatorNotFoundException, InvalidNumberException), e:
-        return response_json({'status': 1, 'message': e.msg})
+        return response_json({'status': 1, 'message': e.msg, 'code':e.code})
 
     except Exception, e:
         return response_json({'status': 1, 'message': e})
