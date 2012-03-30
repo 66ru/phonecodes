@@ -1,5 +1,5 @@
 from utils import response_json
-from utils.exceptions import OperatorNotFoundException, WrongNumberException
+from utils.exceptions import OperatorNotFoundException, InvalidNumberException
 from models import Operator
 from forms import PhoneForm
 
@@ -26,10 +26,10 @@ def show_operator(request):
                 raise OperatorNotFoundException
 
         else:
-            raise WrongNumberException
+            raise InvalidNumberException
 
-    except (OperatorNotFoundException, WrongNumberException), e:
-        return response_json({'status': 1, 'message': e.msg})
+    except (OperatorNotFoundException, InvalidNumberException), e:
+        return response_json({'status': 1, 'message': e.msg, 'code':e.code})
 
     except Exception, e:
         return response_json({'status': 1, 'message': e})

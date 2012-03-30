@@ -76,10 +76,10 @@ class GetOperatorTestCase(unittest.TestCase):
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)
         self.assertEqual(json_resp['status'], 1)
-        self.assertEqual(json_resp['message'], WrongNumberException.msg)
+        self.assertEqual(json_resp['message'], InvalidNumberException.msg)
 
         resp = self.client.post('/', {'phone': 'PhoneNumber'})
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)
         self.assertEqual(json_resp['status'], 1)
-        self.assertEqual(json_resp['message'], WrongNumberException.msg)
+        self.assertEqual(json_resp['message'], InvalidNumberException.msg)
