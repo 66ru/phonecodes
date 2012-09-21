@@ -29,8 +29,8 @@ class Operator(models.Model):
         number = int(cleaned[4:])
         region_operators = cls.objects.filter(region_code=region_code)
         try:
-            operator = region_operators.filter(number_start_range__gte=number)[0]
-            if not operator.number_end_range > number:
+            operator = region_operators.filter(number_end_range__gte=number)[0]
+            if not operator.number_start_range <= number:
                 raise OperatorNotFoundException
         except IndexError:
             raise OperatorNotFoundException
