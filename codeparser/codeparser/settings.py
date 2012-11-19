@@ -7,14 +7,21 @@
 #
 import os, sys
 
+
 def setup_django_env(path):
     import imp
     from django.core.management import setup_environ
 
-    f, filename, desc = imp.find_module('settings', [path])
-    project = imp.load_module('settings', f, filename, desc)
+    f, filename, desc = imp.find_module('scrapy_settings', [path])
+    project = imp.load_module('scrapy_settings', f, filename, desc)
 
     setup_environ(project)
+
+    from django.core.management.commands import syncdb
+    syncdb.Command().execute(noinput=True)
+    from django.core.management.commands import flush
+    flush.Command().execute(noinput=True)
+
 
 path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 sys.path.append(path)
@@ -31,5 +38,3 @@ USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 ITEM_PIPELINES = [
     'codeparser.pipelines.ParserPipeline',
 ]
-
-
