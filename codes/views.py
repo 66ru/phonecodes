@@ -21,6 +21,7 @@ def show_operator(request):
                     'operator': operator.name,
                     'region': operator.region,
                     'mobile': operator.mobile,
+                    'country': operator.country,
                 }
             else:
                 raise OperatorNotFoundException

@@ -7,3 +7,4 @@ class ParserItem(Item):
     name = Field()
     region = Field()
     mobile = Field()
+    country = Field()

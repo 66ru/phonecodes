@@ -10,6 +10,7 @@ class Operator(models.Model):
     number_end_range = models.PositiveIntegerField()
     mobile = models.BooleanField()
     region = models.CharField(max_length=250)
+    country = models.CharField(max_length=4)
 
     class Meta:
         ordering = ['region_code', 'number_end_range']

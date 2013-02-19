@@ -25,6 +25,7 @@ class CodesSpider(BaseSpider):
                 item['number_end_range'] = item_list[2]
                 item['name'] = item_list[4]
                 item['region'] = item_list[5]
+                item['country'] = 'RU'
 
                 if response.url == 'http://www.rossvyaz.ru/docs/articles/DEF-9x.html':
                     item['mobile'] = True
