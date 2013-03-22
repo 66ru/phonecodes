@@ -3,6 +3,7 @@ from utils.exceptions import OperatorNotFoundException, InvalidNumberException
 from models import Operator
 from forms import PhoneForm
 
+
 def show_operator(request):
     try:
         if request.method != 'POST':
@@ -11,7 +12,11 @@ def show_operator(request):
             form = PhoneForm(request.POST)
         if form.is_valid():
             phone = form.cleaned_data['phone']
+
             operator = Operator.find(phone)
+
+            if not operator:
+                operator = Operator.find_by_range(phone)
 
             if operator:
                 response = {

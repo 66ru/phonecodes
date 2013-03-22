@@ -5,7 +5,8 @@
 #
 #     http://doc.scrapy.org/topics/settings.html
 #
-import os, sys
+import os
+import sys
 
 
 def setup_django_env(path):
@@ -27,13 +28,9 @@ path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__)
 sys.path.append(path)
 setup_django_env(path)
 
-BOT_NAME = 'parser'
-BOT_VERSION = '1.0'
-
 LOG_LEVEL = 'INFO'
 SPIDER_MODULES = ['codeparser.spiders']
 NEWSPIDER_MODULE = 'codeparser.spiders'
-USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
 ITEM_PIPELINES = [
     'codeparser.pipelines.ParserPipeline',

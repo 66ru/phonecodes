@@ -1,5 +1,6 @@
 from scrapy.item import Item, Field
 
+
 class ParserItem(Item):
     region_code = Field()
     number_start_range = Field()

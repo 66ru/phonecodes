@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import re
 from django.db import models
 from utils.exceptions import InvalidNumberException, OperatorNotFoundException
@@ -32,7 +33,20 @@ class Operator(models.Model):
         try:
             operator = region_operators.filter(number_end_range__gte=number)[0]
             if not operator.number_start_range <= number:
-                raise OperatorNotFoundException
+                return None
+        except IndexError:
+            return None
+        return operator
+
+    @classmethod
+    def find_by_range(cls, phone):
+        number = cls._get_cleaned_number(phone)[1:]  # Убираем 8 с начала
+
+        try:
+            operator = cls.objects.raw(
+                'select *, max(region_code) from codes_operator where number_start_range <= %s and \
+                number_end_range >= %s;', [number, number])[0]
         except IndexError:
             raise OperatorNotFoundException
+
         return operator
