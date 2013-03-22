@@ -25,7 +25,7 @@ class KzCodesSpider(BaseSpider):
                 try:
                     name = code_node.select('.//a/text()').extract()[0]
                 except IndexError:
-                    name = code_node.extract().split(u'—').pop().replace('</li>', '')
+                    name = code_node.extract().split(u'—').pop().replace('</li>', '').strip()
 
                 item['region_code'] = code_node.select('.//b/text()').extract()[0]
                 item['number_start_range'] = 0
