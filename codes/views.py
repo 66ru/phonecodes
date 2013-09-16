@@ -25,6 +25,7 @@ def show_operator(request):
                     'phone': phone,
                     'operator': operator.name,
                     'region': operator.region,
+                    'region_code': operator.region_code,
                     'mobile': operator.mobile,
                     'country': operator.country,
                 }
