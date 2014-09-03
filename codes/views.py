@@ -18,7 +18,7 @@ def show_operator(request):
             if not operator:
                 operator = Operator.find_by_range(phone)
 
-            if operator:
+            if operator and getattr(operator, 'name', None):
                 response = {
                     'status': 0,
                     'message': 'ok',
