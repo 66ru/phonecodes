@@ -15,7 +15,7 @@ class KzCodesSpider(BaseSpider):
         domain = response.url.replace(urlparse(response.url).path, '')
         hxs = HtmlXPathSelector(response)
 
-        codes_nodes = hxs.select('//*[@id="mw-content-text"]/ul[32]/li')
+        codes_nodes = hxs.select('//*[@id="mw-content-text"]/ul[33]/li')
         city_codes_links = hxs.select('//div[@id="data"]/p[2]/a[@class="decor_link"]/@href')
 
         if codes_nodes:
